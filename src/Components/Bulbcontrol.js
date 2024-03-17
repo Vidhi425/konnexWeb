@@ -13,7 +13,7 @@ const BulbControls = () => {
 
   return (
     <div className="flex flex-col border-2 h-[100vh] w-[30%] justify-center items-center space-y-6">
-      <h1 className="font-bold text-4xl">Bulb Controls</h1>
+      {/* <h1 className="font-bold text-4xl">Bulb Controls</h1>
 
       <img src={bulbImageUrl} alt="Bulb" className="h-15 w-15"></img>
       <img
@@ -21,7 +21,8 @@ const BulbControls = () => {
         alt="Power"
         className="h-40 w-14 cursor-pointer"
         onClick={togglePower}
-      ></img>
+
+      ></img> */}
     </div>
   );
 };
