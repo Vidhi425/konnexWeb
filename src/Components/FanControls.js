@@ -6,7 +6,8 @@ const Controls = () => {
 
   useEffect(() => {
     axios.get(`/devices/HDQcbGz`).then((response) => {
-
+      const { fan } = response.data;
+      setCount(fan);
     });
   }, []);
 
