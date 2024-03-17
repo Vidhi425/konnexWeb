@@ -10,7 +10,7 @@ import { useState } from "react";
 axios.defaults.baseURL = "https://kodessphere-api.vercel.app";
 
 function App() {
-  const [device, setDevice] = useState("");
+  const [device, setDevice] = useState("fan");
   return (
     <>
       <div className="flex flex-row justify-center items-center gap-3 ">
