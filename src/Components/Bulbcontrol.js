@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const BulbControls = () => {
-  const [powerOn, setPowerOn] = useState(false);
-
+  const [powerOn, setPowerOn] = useState(0);
+  useEffect(() => {
+    axios.get(`/devices/HDQcbGz`).then((response) => {
+      // console.log(response.data);
+      const { bulb } = response.data;
+      setPowerOn(bulb);
+    });
+  }, []);
   const togglePower = () => {
-    setPowerOn((prevPower) => !prevPower);
+    setPowerOn((prevPower) => (prevPower ? 0 : 1));
+    axios
+      .post("/devices", {
+        teamid: "HDQcbGz",
+        device: "bulb",
+        value: powerOn ? 0 : 1,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   const bulbImageUrl = powerOn
@@ -14,7 +30,6 @@ const BulbControls = () => {
   return (
     <div className="flex flex-col border-2 h-[100vh] w-[30%] justify-center items-center space-y-6">
       <h1 className="font-bold text-4xl">Bulb Controls</h1>
-
       <img src={bulbImageUrl} alt="Bulb" className="h-15 w-15"></img>
       <img
         src="./images/power.svg"
