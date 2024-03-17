@@ -10,26 +10,27 @@ import { useState } from "react";
 axios.defaults.baseURL = "https://kodessphere-api.vercel.app";
 
 function App() {
-  const [device, setDevice] = useState("fan");
+  const [device, setDevice] = useState(" ");
   return (
     <>
-      <div className="flex flex-row justify-center items-center gap-3 bg-[#8AAAE5] ">
-        <CardSection device={device} setDevice={setDevice} />
-        {device === "fan" ? (
-          <Controls />
-        ) : device === "bulb" ? (
-          <BulbControls />
-        ) : device === "ac" ? (
-          <AcControls />
-        ) : device === "led" ? (
-          <LedControls />
-        ) : (
-          ""
-        )}
-
-        {/* <>{device === "fan" ? <Controls /> : ""}</>
-        <>{device === "bulb" ? <BulbControls /> : ""}</>
-        <>{device === "ac" ? <AcControls /> : ""}</> */}
+      <div
+        className="bg-cover bg-center h-screen"
+        style={{ backgroundImage: "url(./images/bg.svg)" }}
+      >
+        <div className="flex flex-row justify-center items-center gap-3 bg-white bg-opacity-20 backdrop-filter backdrop-blur-xs border border-gray-200 rounded-lg ">
+          <CardSection device={device} setDevice={setDevice} />
+          {device === "fan" ? (
+            <Controls />
+          ) : device === "bulb" ? (
+            <BulbControls />
+          ) : device === "ac" ? (
+            <AcControls />
+          ) : device === "led" ? (
+            <LedControls />
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </>
   );

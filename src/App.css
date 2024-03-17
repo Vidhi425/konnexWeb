@@ -1,9 +1,27 @@
 
-@keyframes rotateFan {
+@keyframes rotate {
   from{
     transform: rotate(0deg);
   }
   to{
     transform: rotate(360deg);
   }
+}
+.fan-animation {
+  background-image: url("../public/images/fan.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 9rem; /* Adjust width and height as needed */
+  height: 10rem;
+  animation: rotate infinite linear;
+  transform-origin: center center; 
+}
+.fan-animation_none{
+  background-image: url("../public/images/fan.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 9rem; /* Adjust width and height as needed */
+  height: 10rem;
+  transform-origin: center center; 
+  animation: none;
 }
