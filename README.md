@@ -1,4 +1,4 @@
-Problem Statement
+Problem Statement :
 Craft a web interface that seamlessly interacts with the provided API and
 framework to control smart home elements, specifically focusing on fan
 lights and other equipment. The interface should be aesthetically
