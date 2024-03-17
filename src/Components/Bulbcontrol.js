@@ -19,7 +19,7 @@ const BulbControls = () => {
       <img
         src="./images/power.svg"
         alt="Power"
-        className="h-14 w-14 cursor-pointer"
+        className="h-40 w-14 cursor-pointer"
         onClick={togglePower}
       ></img>
     </div>
