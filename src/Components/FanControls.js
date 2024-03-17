@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 const Controls = () => {
   const [count, setCount] = useState(0);
   function decreaseHandler() {
@@ -8,6 +9,15 @@ const Controls = () => {
 
   function increaseHandler() {
     setCount(count > 4 ? 5 : count + 1);
+    axios
+      .post("/devices", {
+        teamid: "HDQcbGz",
+        device: "fan",
+        value: count,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }
 
   function resetHandler() {
@@ -34,7 +44,6 @@ const Controls = () => {
         </button>
       </div>
       <div>
-        {" "}
         <button
           onClick={resetHandler}
           className="bg-[#0398d4] text-white px-5 py-2 rounded-sm text-lg"
