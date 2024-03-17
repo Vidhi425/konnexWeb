@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 
+=======
+import React from "react";
+import { useState } from "react";
+import axios from "axios";
+>>>>>>> 8d865b53a56400d797447463abcbf3c880f115d8
 const Controls = () => {
   const [count, setCount] = useState(0);
 
@@ -8,7 +14,16 @@ const Controls = () => {
   }
 
   function increaseHandler() {
-    setCount((prevCount) => (prevCount > 4 ? 5 : prevCount + 1));
+    setCount(count > 4 ? 5 : count + 1);
+    axios
+      .post("/devices", {
+        teamid: "HDQcbGz",
+        device: "fan",
+        value: count,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }
 
   function resetHandler() {
