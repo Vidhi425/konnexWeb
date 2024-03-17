@@ -9,6 +9,7 @@ const LedControls = () => {
     });
   }, []);
 
+
   function handleColorChange(event) {
     // setColor(event.target.value);
     const newcolor = event.target.value;
@@ -56,6 +57,7 @@ const LedControls = () => {
         </select>
       </div>
     </>
+
   );
 };
 
