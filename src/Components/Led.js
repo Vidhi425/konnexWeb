@@ -1,10 +1,27 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 const LedControls = () => {
-  const [color, setColor] = useState("#ff0000"); // Red color as default
+  const [color, setColor] = useState(""); // Red color as default
+  useEffect(() => {
+    axios.get(`/devices/HDQcbGz`).then((response) => {
+      const { led } = response.data;
+      setColor(led);
+    });
+  }, []);
 
   function handleColorChange(event) {
-    setColor(event.target.value);
+    // setColor(event.target.value);
+    const newcolor = event.target.value;
+    setColor(newcolor);
+    axios
+      .post("/devices", {
+        teamid: "HDQcbGz",
+        device: "led",
+        value: newcolor,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }
 
   return (
