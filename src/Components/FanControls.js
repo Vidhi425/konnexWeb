@@ -14,10 +14,10 @@ const Controls = () => {
     setCount(0);
   }
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col border-2 h-[100vh] w-[30%] font-bold text-4xl justify-center items-center space-y-6">
       <h1>Fan Controls</h1>
 
-      <img src="./images/fan.png" className="h-10 w-10"></img>
+      <img src="./images/fan.png" className="h-15 w-15"></img>
       <div className="bg-white flex  gap-12 py-3 rounded-sm text-[25px] text-[#344151]">
         <button
           onClick={decreaseHandler}
