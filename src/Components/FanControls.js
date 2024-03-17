@@ -1,19 +1,37 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 const Controls = () => {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    axios.get(`/devices/HDQcbGz`).then((response) => {
+
+    });
+  }, []);
+
   function decreaseHandler() {
     setCount(count < 1 ? 0 : count - 1);
-  }
-
-  function increaseHandler() {
-    setCount(count > 4 ? 5 : count + 1);
+    let speed = count - 1;
     axios
       .post("/devices", {
         teamid: "HDQcbGz",
         device: "fan",
-        value: count,
+        value: speed,
+      })
+      .then((response) => {
+        console.log(response);
+      });
+  }
+
+  function increaseHandler() {
+    setCount(count > 4 ? 5 : count + 1);
+    let speed = count + 1;
+    axios
+      .post("/devices", {
+        teamid: "HDQcbGz",
+        device: "fan",
+        value: speed,
       })
       .then((response) => {
         console.log(response);
@@ -22,6 +40,16 @@ const Controls = () => {
 
   function resetHandler() {
     setCount(0);
+    let speed = 0;
+    axios
+      .post("/devices", {
+        teamid: "HDQcbGz",
+        device: "fan",
+        value: speed,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }
   return (
     <div className="flex flex-col border-2 h-[100vh] w-[30%] font-bold text-4xl justify-center items-center space-y-6">

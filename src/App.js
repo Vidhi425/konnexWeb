@@ -1,6 +1,9 @@
 import "./App.css";
 import Controls from "../src/Components/FanControls";
 import CardSection from "./Components/CardSection";
+import BulbControls from "./Components/Bulbcontrol";
+import AcControls from "./Components/Ac";
+import LedControls from "./Components/Led";
 import axios from "axios";
 import { useState } from "react";
 
@@ -12,8 +15,21 @@ function App() {
     <>
       <div className="flex flex-row justify-center items-center gap-3 ">
         <CardSection device={device} setDevice={setDevice} />
+        {device === "fan" ? (
+          <Controls />
+        ) : device === "bulb" ? (
+          <BulbControls />
+        ) : device === "ac" ? (
+          <AcControls />
+        ) : device === "led" ? (
+          <LedControls />
+        ) : (
+          ""
+        )}
 
-        <>{device === "fan" ? <Controls /> : ""}</>
+        {/* <>{device === "fan" ? <Controls /> : ""}</>
+        <>{device === "bulb" ? <BulbControls /> : ""}</>
+        <>{device === "ac" ? <AcControls /> : ""}</> */}
       </div>
     </>
   );
