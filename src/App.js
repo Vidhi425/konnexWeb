@@ -1,13 +1,8 @@
 import "./App.css";
-import CardSection from "./Components/CardSection";
-import Controls from "./Components/Controls";
+import Controls from "../src/Components/FanControls";
+
 function App() {
-  return (
-    <div className="w-screen max-w-full h-screen">
-      <CardSection />
-      <Controls />
-    </div>
-  );
+  return <Controls />;
 }
 
 export default App;
