@@ -1,23 +1,35 @@
 import React from "react";
 import { useState } from "react";
+
 const AcControls = () => {
   const [count, setCount] = useState(16);
+
   function decreaseHandler() {
-    setCount(count < 17 ? 16 : count - 1);
+    setCount((prevCount) => (prevCount < 17 ? 16 : prevCount - 1));
   }
 
   function increaseHandler() {
-    setCount(count > 29 ? 30 : count + 1);
+    setCount((prevCount) => (prevCount > 29 ? 30 : prevCount + 1));
   }
 
   function resetHandler() {
-    setCount(0);
+    setCount(16);
   }
+
+  let imageUrl;
+  if (count >= 16 && count <= 20) {
+    imageUrl = "./images/air-conditioner.png";
+  } else if (count > 20 && count <= 25) {
+    imageUrl = "./images/air-conditioner (1).png";
+  } else if (count > 25 && count <= 30) {
+    imageUrl = "./images/air-conditioner (2).png";
+  }
+
   return (
     <div className="flex flex-col font-bold text-4xl border-2 h-[100vh] w-[30%] justify-center items-center space-y-6">
       <h1>Ac Controls</h1>
 
-      <img src="./images/air-conditioner (2).png" className="h-15 w-15"></img>
+      <img src={imageUrl} alt="AC" className="h-15 w-15"></img>
       <div className="bg-white flex  gap-12 py-3 rounded-sm text-[25px] text-[#344151]">
         <button
           onClick={decreaseHandler}
@@ -34,7 +46,6 @@ const AcControls = () => {
         </button>
       </div>
       <div>
-        {" "}
         <button
           onClick={resetHandler}
           className="bg-[#0398d4] text-white px-5 py-2 rounded-sm text-lg"

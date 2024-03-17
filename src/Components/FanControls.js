@@ -1,23 +1,33 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+
 const Controls = () => {
   const [count, setCount] = useState(0);
+
   function decreaseHandler() {
-    setCount(count < 1 ? 0 : count - 1);
+    setCount((prevCount) => (prevCount < 1 ? 0 : prevCount - 1));
   }
 
   function increaseHandler() {
-    setCount(count > 4 ? 5 : count + 1);
+    setCount((prevCount) => (prevCount > 4 ? 5 : prevCount + 1));
   }
 
   function resetHandler() {
     setCount(0);
   }
+
+  // Calculate the rotation degree based on the count
+  const rotationDegree = count * 20;
+
   return (
     <div className="flex flex-col border-2 h-[100vh] w-[30%] font-bold text-4xl justify-center items-center space-y-6">
       <h1>Fan Controls</h1>
 
-      <img src="./images/fan.png" className="h-15 w-15"></img>
+      <img
+        src="./images/fan.png"
+        alt="Fan"
+        className="h-15 w-15"
+        style={{ animation: "rotateFan" }}
+      ></img>
       <div className="bg-white flex  gap-12 py-3 rounded-sm text-[25px] text-[#344151]">
         <button
           onClick={decreaseHandler}
@@ -34,7 +44,6 @@ const Controls = () => {
         </button>
       </div>
       <div>
-        {" "}
         <button
           onClick={resetHandler}
           className="bg-[#0398d4] text-white px-5 py-2 rounded-sm text-lg"
