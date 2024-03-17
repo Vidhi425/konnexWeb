@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const LedControls = () => {
   const [color, setColor] = useState("#ff0000"); // Red color as default
 
+
   function handleColorChange(event) {
     setColor(event.target.value);
   }
@@ -39,6 +40,7 @@ const LedControls = () => {
         </select>
       </div>
     </>
+
   );
 };
 

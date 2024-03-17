@@ -4,6 +4,7 @@ import axios from "axios";
 const Controls = () => {
   const [count, setCount] = useState(0);
 
+
   useEffect(() => {
     axios.get(`/devices/HDQcbGz`).then((response) => {
 
@@ -22,7 +23,7 @@ const Controls = () => {
       .then((response) => {
         console.log(response);
       });
-  }
+
 
   function increaseHandler() {
     setCount(count > 4 ? 5 : count + 1);
@@ -51,11 +52,20 @@ const Controls = () => {
         console.log(response);
       });
   }
+
+  // Calculate the rotation degree based on the count
+  const rotationDegree = count * 20;
+
   return (
-    <div className="flex flex-col border-2 h-[100vh] w-[30%] font-bold text-4xl justify-center items-center space-y-6">
+    <div className="flex flex-col border-2 h-[100vh] w-[30%] font-bold text-4xl justify-center items-center space-y-6 rounded-lg">
       <h1>Fan Controls</h1>
 
-      <img src="./images/fan.png" className="h-15 w-15"></img>
+      <img
+        src="./images/fan.png"
+        alt="Fan"
+        className="h-40 w-15"
+        style={{ animation: "rotateFan" }}
+      ></img>
       <div className="bg-white flex  gap-12 py-3 rounded-sm text-[25px] text-[#344151]">
         <button
           onClick={decreaseHandler}

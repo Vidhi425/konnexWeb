@@ -21,8 +21,8 @@ const BulbControls = () => {
         alt="Power"
         className="h-40 w-14 cursor-pointer"
         onClick={togglePower}
+
       ></img> */}
-      hello
     </div>
   );
 };
